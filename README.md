@@ -1,1 +1,0 @@
-# sojung32.github.io
