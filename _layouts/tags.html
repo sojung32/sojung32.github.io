@@ -11,19 +11,19 @@ layout: archive
   {% endif %}
 {% endfor %}
 
-<ul class="taxonomy__index">
+<h1 class="tags_title">Tags</h1>
+<div class="tags_list">
   {% for i in (1..tags_max) reversed %}
     {% for tag in site.tags %}
       {% if tag[1].size == i %}
-        <li>
-          <a href="#{{ tag[0] | slugify }}">
-            <strong>{{ tag[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
-          </a>
-        </li>
+        <div class="a_tag">
+          <a href="#{{ tag[0] | slugify }}">{{ tag[0] | prepend: '#' }}</a>
+          <span class="tag_count">{{ i }}</span>
+        </div>
       {% endif %}
     {% endfor %}
   {% endfor %}
-</ul>
+</div>
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
 {% for i in (1..tags_max) reversed %}

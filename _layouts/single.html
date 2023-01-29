@@ -43,7 +43,11 @@ layout: default
           <aside class="sidebar__right summary">
             <button class="summary_open"><i class="xi-hamburger-back"></i></button>
             <nav class="toc summary_list">
-              <header><h4 class="nav__title"><i class="xi-hamburger-out"></i> {{ page.title }}</h4></header>
+              <header>
+                <div class="nav__title">
+                  <i class="xi-hamburger-out"></i><h4>{{ page.title }}</h4>
+                </h4>
+              </header>
               {% include toc.html sanitize=true html=content h_min=1 h_max=6 class="toc__menu" skip_no_ids=true %}
             </nav>
           </aside>
