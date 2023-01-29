@@ -24,6 +24,8 @@ excerpt: 'React란? 사용자 인터페이스를 만들기 위한 JavaScript 라
 * React는 이름답게 Reactive한 UI, 다시말해 반응형 사용자 인터페이스 구축하는 것에 도움을 준다.
 
 # React, Angular 그리고 Vue.js
+![image](https://user-images.githubusercontent.com/56745491/215328516-bdbee1d5-a286-4288-a0e5-08572e971664.png)
+
 [자바스크립트 현황 2022](https://2022.stateofjs.com/ko-KR/libraries/front-end-frameworks/)의 프론트엔드 프레임워크 부문에 따르면 최근 Solid, Svelte, Qwik의 만족도와 관심도가 리액트를 앞질렀으나 사용량과 인지도면에서는 리액트가 여전히 상위권을 지키고 있으며 앵귤러와 뷰가 그 뒤를 따르고 있다.
 
 현재 사용량 측면에서 꾸준히 상위권을 나란히 달리고 있는 세 프레임워크를 비교해보자.
