@@ -1,0 +1,27 @@
+<div class="category_title">
+    <h1>{{ page.title }} </h1>
+</div>
+
+<div class="sub_category">
+    {% assign subcates = site.data.navigation.menu[cateindex].subcategories %}
+    {% for subcate in subcates %}
+        <h2><a href="{{ subcate.url }}">{{ subcate.title }}</a></h2>
+        {% assign subposts = site.categories[subcate.name] %}
+        <div class="sub_posts">
+            {% for post in subposts %} 
+                {% if post.id %}
+                    {% assign post_title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+                {% else %}
+                    {% assign post_title = post.title %}
+                {% endif %}
+                <article class="sub_post">
+                    <h3 class="post_title">{{ post_title }}</h3>
+                    {% if post.excerpt %}
+                        <p class="summary">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
+                    {% endif %}
+                    <p class="date">{{ post.date | date: '%Y-%m-%d'}}</p>
+                </article>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>

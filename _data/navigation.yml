@@ -1,12 +1,45 @@
 # main links
-main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+menu:
+  - title: 'Programming'
+    url: /programming/
+    name: 'programming'
+    subcategories:
+      - title: 'Java'
+        name: 'java'
+        url: /programming/java/
+      - title: 'JavaScript'
+        name: 'javascript'
+        url: /programming/javascript/
+
+  - title: 'Framework'
+    name: 'framework'
+    url: /framework/
+    subcategories:
+      - title: 'Spring'
+        name: 'spring'
+        url: /framework/spring/
+      - title: 'React'
+        name: 'react'
+        url: /framework/react/
+
+  - title: 'DevOps'
+    name: 'devops'
+    url: /devops/
+    subcategories:
+      - title: 'Server'
+        name: 'server'
+        url: /devops/server/
+      - title: 'Docker'
+        name: 'docker'
+        url: /devops/docker/
+      - title: 'Git'
+        name: 'git'
+        url: /devops/git/
+
+  - title: 'Study'
+    name: 'study'
+    url: /study/
+    subcategories:
+      - title: 'Algorithm'
+        name: 'algorithm'
+        url: /study/algorithm/

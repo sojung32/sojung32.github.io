@@ -1,0 +1,32 @@
+<nav class="navigation">
+    <button class="toggle_close"><i class="xi-close"></i></button>
+    <div class="nav_logo">
+        <img src="{{ '/assets/images/serene_forest_icon.png' }}"/>
+    </div>
+    <div class="categories">
+        {% for category in site.data.navigation.menu %}
+            <div class="category">
+                <div class="cate_title">
+                    <img src="{{ '/assets/images/sprout.gif' }}"/>
+                    {% assign catecount = site.categories[category.name].size %}
+                    {% if catecount == value[0] %}
+                        {% assign catecount = 0 %}
+                    {% endif %}
+                    <a href="{{ category.url }}">{{ category.title }} <span>({{ catecount }})</span></a>
+                </div>
+                <div class="subcategory">
+                    {% for subcate in category.subcategories %}
+                        {% assign subcount = site.categories[subcate.name].size %}
+                        {% if subcount == value[0] %}
+                            {% assign subcount = 0 %}
+                        {% endif %}
+                        <div class="subcate_title">
+                            <i class="xi-angle-right-min"></i>
+                            <a href="{{ subcate.url }}">{{ subcate.title }} <span>({{ subcount }})</span></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</nav>

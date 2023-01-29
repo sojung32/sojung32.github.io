@@ -1,0 +1,26 @@
+<div class="category_title">
+    <h1>{{ page.title }} </h1>
+</div>
+
+<div class="category_posts">
+    {% for post in posts %} 
+        {% if post.id %}
+            {% assign post_title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+        {% else %}
+            {% assign post_title = post.title %}
+        {% endif %}
+        <article class="category_post" onclick="location.href='{{ post.url }}'">
+            <div class="tags">
+                {% assign tags_sorted = post.tags | sort_natural %}
+                {% for tag_word in tags_sorted %}
+                    <a href="{{ tag_word | slugify | prepend: path_type | prepend: site.tag_archive.path | relative_url }}">#{{ tag_word }}</a>
+                {% endfor %}
+            </div>  
+            <h2 class="post_title">{{ post_title }}</h2>
+            {% if post.excerpt %}
+                <p class="summary">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
+            {% endif %}
+            <p class="date">{{ post.date | date: '%Y-%m-%d'}}</p>
+        </article>
+    {% endfor %}
+</div>

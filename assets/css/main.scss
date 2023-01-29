@@ -5,5 +5,35 @@ search: false
 
 @charset "utf-8";
 
+@font-face {
+	font-family: 'NanumSquare';
+	src: url('../font/NanumSquareR.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NanumSquare';
+	src: url('../font/NanumSquareL.otf') format('opentype');
+	font-weight: 200;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NanumSquare';
+	src: url('../font/NanumSquareB.otf') format('opentype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'NanumSquare';
+	src: url('../font/NanumSquareEB.otf') format('opentype');
+	font-weight: 800;
+	font-style: normal;
+}
+
+* { font-family: 'NanumSquare'!important; }
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials

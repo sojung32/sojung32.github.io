@@ -1,14 +1,50 @@
 {% if page.previous or page.next %}
-  <nav class="pagination">
-    {% if page.previous %}
-      <a href="{{ page.previous.url | relative_url }}" class="pagination--pager" title="{{ page.previous.title | markdownify | strip_html }}">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
-    {% else %}
-      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_previous | default: "Previous" }}</a>
+  <section class="another_posts">
+    {% assign prev_post = page.previous %}
+    {% if prev_post %}
+      <div class="another_post" onclick="location.href='{{ prev_post.url }}'">
+        <h3>Prev Post</h3>
+        <div class="post">
+          <div class="categorys">
+            {% assign categories_sorted = prev_post.categories | sort_natural %}
+            {% for category_word in categories_sorted %}
+              <i class="xi-angle-right-min"></i>
+              <a href="{{ category_word | slugify | prepend: path_type | prepend: site.category_archive.path | relative_url }}">{{ category_word }}</a>
+            {% endfor %}
+          </div>
+          <span class="date">{{ prev_post.date | date: '%Y-%m-%d'}}</span>
+          <h3 class="post_title">{{ prev_post.title }}</h3>
+          <div class="tags">
+            {% assign tags_sorted = prev_post.tags | sort_natural %}
+            {% for tag_word in tags_sorted %}
+              <a href="{{ tag_word | slugify | prepend: path_type | prepend: site.tag_archive.path | relative_url }}">#{{ tag_word }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     {% endif %}
-    {% if page.next %}
-      <a href="{{ page.next.url | relative_url }}" class="pagination--pager" title="{{ page.next.title | markdownify | strip_html }}">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
-    {% else %}
-      <a href="#" class="pagination--pager disabled">{{ site.data.ui-text[site.locale].pagination_next | default: "Next" }}</a>
+    {% assign next_post = page.next %}
+    {% if next_post %}
+      <div class="another_post" onclick="location.href='{{ next_post.url }}'">
+        <h3>Next Post</h3>
+        <div class="post">
+          <div class="categorys">
+            {% assign categories_sorted = next_post.categories | sort_natural %}
+            {% for category_word in categories_sorted %}
+              <i class="xi-angle-right-min"></i>
+              <a href="{{ category_word | slugify | prepend: path_type | prepend: site.category_archive.path | relative_url }}">{{ category_word }}</a>
+            {% endfor %}
+          </div>
+          <span class="date">{{ next_post.date | date: '%Y-%m-%d'}}</span>
+          <h3 class="post_title">{{ next_post.title }}</h3>
+          <div class="tags">
+            {% assign tags_sorted = next_post.tags | sort_natural %}
+            {% for tag_word in tags_sorted %}
+              <a href="{{ tag_word | slugify | prepend: path_type | prepend: site.tag_archive.path | relative_url }}">#{{ tag_word }}</a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     {% endif %}
-  </nav>
+  </section>
 {% endif %}

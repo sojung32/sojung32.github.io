@@ -29,14 +29,35 @@ layout: archive
 {% for i in (1..tags_max) reversed %}
   {% for tag in site.tags %}
     {% if tag[1].size == i %}
-      <section id="{{ tag[0] | slugify | downcase }}" class="taxonomy__section">
-        <h2 class="archive__subtitle">{{ tag[0] }}</h2>
-        <div class="entries-{{ entries_layout }}">
-          {% for post in tag.last %}
-            {% include archive-single.html type=entries_layout %}
+      <section id="{{ tag[0] | slugify | downcase }}">
+        <h2 class="tag_title">{{ tag[0] | prepend: '#' }}</h2>
+        <div class="tag_posts">
+          {% for post in tag.last %} 
+              {% if post.id %}
+                  {% assign post_title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+              {% else %}
+                  {% assign post_title = post.title %}
+              {% endif %}
+              <article class="tag_post" onclick="location.href='{{ post.url }}'">
+                <div class="categorys">
+                  {% for category in post.categories %}
+                    {% if post.categories[0] == category %}
+                      {% assign cateurl = category | slugify | prepend: path_type | relative_url %}
+                    {% else %}
+                      {% assign cateurl = category | slugify | prepend: path_type | prepend: '/' | prepend: post.categories[0] | relative_url %}
+                    {% endif %}
+                    <i class="xi-angle-right-min"></i>
+                    <a href="{{ cateurl }}">{{ category }}</a>
+                  {% endfor %}
+                </div>
+                  <h2 class="post_title">{{ post_title }}</h2>
+                  {% if post.excerpt %}
+                      <p class="summary">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
+                  {% endif %}
+                  <p class="date">{{ post.date | date: '%Y-%m-%d'}}</p>
+              </article>
           {% endfor %}
         </div>
-        <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
       </section>
     {% endif %}
   {% endfor %}

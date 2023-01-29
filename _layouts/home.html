@@ -2,21 +2,52 @@
 layout: archive
 ---
 
-{{ content }}
+<div class="home">
+  <h1>serene forest</h1>
+  <div class="home_greeting">
+    <p>welcome!</p>
+  </div>
+  <div class="home_contact">
+    {% for link in site.author.links %}
+      {% if link.url %}
+        <a class="contact" href="{{ link.url }}"><i class="{{ link.icon }}"></i></a>
+      {% endif %}
+    {% endfor %}
+  </div>
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+  {% if paginator %}
+    {% assign posts = paginator.posts %}
+  {% else %}
+    {% assign posts = site.posts %}
+  {% endif %}
 
-{% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts %}
-{% endif %}
-
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% for post in posts %}
-    {% include archive-single.html type=entries_layout %}
-  {% endfor %}
+  <h3 class="home_ptitle">Recent Posts</h3>
+  <div class="home_posts">
+    {% for post in posts %}
+      <div class="home_post" onclick="location.href='{{ post.url }}'">
+        <div class="home_categorys">
+          {% for category in post.categories %}
+            {% if post.categories[0] == category %}
+              {% assign cateurl = category | slugify | prepend: path_type | relative_url %}
+            {% else %}
+              {% assign cateurl = category | slugify | prepend: path_type | prepend: '/' | prepend: post.categories[0] | relative_url %}
+            {% endif %}
+            <i class="xi-angle-right-min"></i>
+            <a href="{{ cateurl }}">{{ category }}</a>
+          {% endfor %}
+        </div>
+        <span class="home_post_date">{{ post.date | date: '%Y-%m-%d'}}</span>
+        <h2 class="post_title">{{ post.title }}</h2>
+        {% if post.excerpt %}
+          <p class="home_post_summary">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>
+        {% endif %}
+        <div class="home_tags">
+          {% for tag in post.tags %}
+            <a href="{{ tag | slugify | prepend: path_type | prepend: site.tag_archive.path | relative_url }}">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
-
-{% include paginator.html %}
+<!-- {% include paginator.html %} -->

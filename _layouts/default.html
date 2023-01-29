@@ -2,21 +2,17 @@
 ---
 
 <!doctype html>
-<!--
-  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
-  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
-  Free for personal and commercial use under the MIT license
-  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
--->
-<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
+<html lang="{{ site.locale }}">
   <head>
-    {% include head.html %}
-    {% include head/custom.html %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include sojung32/head.html %}
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
     {% include_cached skip-links.html %}
-    {% include_cached masthead.html %}
+    {% include sojung32/header.html %}
 
     <div class="initial-content">
       {{ content }}
@@ -28,10 +24,18 @@
       </div>
     {% endif %}
 
-    <div id="footer" class="page__footer">
+    <div class="gototop">
+      <a href="#""><i class="xi-arrow-up"></i></a>
+    </div>
+    <div id="footer" class="page__footer footer_sm">
       <footer>
-        {% include footer/custom.html %}
-        {% include_cached footer.html %}
+        <div class="page__footer-copyright">
+          &copy; {{ site.time | date: '%Y' }} 
+          <a href="https://github.com/sojung32" rel="nofollow">{{ site.name | default: site.title }}</a>. 
+          {{ site.data.ui-text[site.locale].powered_by | default: "Powered by" }} 
+          <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; 
+          <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.
+        </div>
       </footer>
     </div>
 
