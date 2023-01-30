@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: Server
+title: 'Git'
 permalink: /devops/git/
 ---
 
