@@ -14,7 +14,7 @@
                 {% else %}
                     {% assign post_title = post.title %}
                 {% endif %}
-                <article class="sub_post">
+                <article class="sub_post" onclick="location.href='{{ post.url }}'">
                     <h3 class="post_title">{{ post_title }}</h3>
                     {% if post.excerpt %}
                         <p class="summary">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>

@@ -6,10 +6,14 @@
         <h3>Prev Post</h3>
         <div class="post">
           <div class="categorys">
-            {% assign categories_sorted = prev_post.categories | sort_natural %}
-            {% for category_word in categories_sorted %}
+            {% for category in prev_post.categories %}
+              {% if prev_post.categories[0] == category %}
+                {% assign cateurl = category | slugify | prepend: path_type | relative_url %}
+              {% else %}
+                {% assign cateurl = category | slugify | prepend: path_type | prepend: '/' | prepend: prev_post.categories[0] | relative_url %}
+              {% endif %}
               <i class="xi-angle-right-min"></i>
-              <a href="{{ category_word | slugify | prepend: path_type | prepend: site.category_archive.path | relative_url }}">{{ category_word }}</a>
+              <a href="{{ cateurl }}">{{ category }}</a>
             {% endfor %}
           </div>
           <span class="date">{{ prev_post.date | date: '%Y-%m-%d'}}</span>
@@ -29,10 +33,14 @@
         <h3>Next Post</h3>
         <div class="post">
           <div class="categorys">
-            {% assign categories_sorted = next_post.categories | sort_natural %}
-            {% for category_word in categories_sorted %}
+            {% for category in next_post.categories %}
+              {% if next_post.categories[0] == category %}
+                {% assign cateurl = category | slugify | prepend: path_type | relative_url %}
+              {% else %}
+                {% assign cateurl = category | slugify | prepend: path_type | prepend: '/' | prepend: next_post.categories[0] | relative_url %}
+              {% endif %}
               <i class="xi-angle-right-min"></i>
-              <a href="{{ category_word | slugify | prepend: path_type | prepend: site.category_archive.path | relative_url }}">{{ category_word }}</a>
+              <a href="{{ cateurl }}">{{ category }}</a>
             {% endfor %}
           </div>
           <span class="date">{{ next_post.date | date: '%Y-%m-%d'}}</span>
