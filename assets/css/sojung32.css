@@ -163,7 +163,7 @@ button {
 }
 .home .home_posts .home_post {
     flex: 1;
-    flex-basis: 330px;
+    flex-basis: 400px;
     border-radius: 20px;
     padding: 30px;
     border: 1px solid #E2EEE2;
