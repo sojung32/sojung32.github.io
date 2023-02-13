@@ -43,3 +43,6 @@ menu:
       - title: 'Algorithm'
         name: 'algorithm'
         url: /study/algorithm/
+      - title: 'Programmers'
+        name: 'programmers'
+        url: /study/programmers/
